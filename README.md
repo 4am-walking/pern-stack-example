@@ -12,10 +12,9 @@ cd frontend && npm install
 cd ../common && npm install
 cd ../backend && npm install
 ```
-- Run the following in both frontend and backend to build production
+- Run the following in both frontend and backend directories to build production
 ```
 npm run build
-
 ```
 - Make sure you're in the backend directory and start the production app
 ```
