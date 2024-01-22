@@ -6,16 +6,17 @@ Steps to run locally:
 sudo apt install npm git
 git clone https://github.com/4am-walking/senior-capstone.git
 ```
-- Install packages and build frontend
+- Install packages
 ```
-cd frontend
-npm install
+cd frontend && npm install
+cd ../common && npm install
+cd ../backend && npm install
+```
+- Run the following in both frontend and backend directories to build production
+```
 npm run build
 ```
-- Install packages, build backend, and start app
+- Make sure you're in the backend directory and start the production app
 ```
-cd ../backend
-npm install
-npm run build
 npm start
 ```
