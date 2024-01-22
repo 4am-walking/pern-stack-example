@@ -6,13 +6,17 @@ Steps to run locally:
 sudo apt install npm git
 git clone https://github.com/4am-walking/senior-capstone.git
 ```
+- Copy .env.example to .env and set environment variables for PostgreSQL database (You must have a valid PostgreSQL instance for the project to function)
+```
+cp .env.example .env
+```
 - Install packages
 ```
 cd frontend && npm install
 cd ../common && npm install
 cd ../backend && npm install
 ```
-- Run the following in both frontend and backend directories to build production
+- Run the following in the frontend directory first, and then the backend directory to build production
 ```
 npm run build
 ```
