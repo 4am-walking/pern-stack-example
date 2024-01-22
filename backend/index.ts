@@ -3,10 +3,27 @@ import cors from "cors";
 import {plainToClass} from "class-transformer";
 import {RequestBody, ResponseBody} from "common";
 import {validate} from "class-validator";
+import dotenv from "dotenv"
 
+dotenv.config()
 const path = require('path');
 const app = express();
+const db = require('./db');
 
+
+app.get('/index', async (req, res) => {
+    try {
+      const result = await db.query('SELECT * FROM users');
+      res.json(result.rows);
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+  
+  app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+  });
 // Enable cors to be able to reach the backend on localhost:8080 while running React.js in dev mode on localhost:3000
 // You might want to disbale this on production.
 app.use(cors());
@@ -42,7 +59,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 app.use(express.static(path.join(__dirname, 'build')));
 
 // Start the server
-const PORT = process.env.PORT || 8080;
+const PORT = 8080;
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
     console.log('Press Ctrl+C to quit.');
